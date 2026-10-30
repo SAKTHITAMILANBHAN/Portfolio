@@ -12,3 +12,8 @@ Open `index.html` in a browser.
 4. Wait for GitHub Pages to publish the site.
 
 The portfolio includes a **Request resume** email link in the hero section.
+
+
+## Profile photo
+
+The hero section uses `profile-photo.jpg`. Keep this image in the same folder as `index.html` when deploying.
