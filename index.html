@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Sakthivel Arumugam — Software Engineer building enterprise applications, APIs and data-driven solutions.">
+<title>Sakthivel Arumugam | Software Engineer</title>
+<style>
+:root {
+  --site-primary: #142B49;
+  --site-on-primary: #FFFFFF;
+  --site-secondary: #CBEAE5;
+  --site-on-secondary: #102D32;
+  --site-background: #F3F6F7;
+  --site-on-background: #182635;
+  --site-font-body: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-font-heading: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --site-heading-scale: 1;
+  --site-spacing-scale: 1;
+  --site-radius-scale: 1;
+  --site-decoration-opacity: 1;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; font-family: var(--site-font-body); color: light-dark(#182635, #E8EEF5); background: light-dark(#F3F6F7, #0B1220); }
+#app { min-height: 100vh; width: 100%; border-radius: 0; background-color: var(--site-background); color: var(--site-on-background); overflow: hidden; }
+a { color: inherit; text-decoration: none; }
+button, a { -webkit-tap-highlight-color: transparent; }
+.container { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+.topbar { position: sticky; top: 0; z-index: 20; background: light-dark(rgba(243,246,247,.92), rgba(11,18,32,.92)); backdrop-filter: blur(16px); border-bottom: 1px solid light-dark(#DDE5E8, #243246); }
+.nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: -.04em; }
+.brand-mark { width: 38px; height: 38px; border-radius: calc(12px * var(--site-radius-scale)); display: grid; place-items: center; background: var(--site-primary); color: var(--site-on-primary); font-size: 13px; letter-spacing: -.04em; }
+.brand span:last-child { font-size: 15px; }
+.nav-links { display: flex; align-items: center; gap: 28px; font-size: 13px; font-weight: 650; color: light-dark(#536273, #B3C0CE); }
+.nav-links a:hover { color: light-dark(#142B49, #CBEAE5); }
+.nav-cta, .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; border: 0; cursor: pointer; border-radius: calc(999px * var(--site-radius-scale)); padding: calc(13px * var(--site-spacing-scale)) calc(20px * var(--site-spacing-scale)); font: 700 13px var(--site-font-body); transition: transform .2s, opacity .2s, background .2s; }
+.nav-cta, .button-primary { background: var(--site-primary); color: var(--site-on-primary); }
+.button-secondary { background: var(--site-secondary); color: var(--site-on-secondary); }
+.button-outline { border: 1px solid rgba(255,255,255,.35); color: white; background: transparent; }
+.button:hover, .nav-cta:hover { transform: translateY(-2px); }
+.menu-toggle { display: none; border: 1px solid light-dark(#DDE5E8,#314157); background: transparent; color: inherit; border-radius: 12px; padding: 10px; }
+.hero { position: relative; background: var(--site-primary); color: var(--site-on-primary); padding: calc(100px * var(--site-spacing-scale)) 0 calc(96px * var(--site-spacing-scale)); isolation: isolate; }
+.hero:before, .hero:after { content: ""; position: absolute; z-index: -1; pointer-events: none; opacity: var(--site-decoration-opacity); border-radius: 50%; }
+.hero:before { width: 520px; height: 520px; right: -160px; top: -230px; border: 1px solid rgba(203,234,229,.18); box-shadow: 0 0 0 54px rgba(203,234,229,.035), 0 0 0 108px rgba(203,234,229,.025); }
+.hero:after { width: 300px; height: 300px; right: 14%; bottom: -220px; background: rgba(203,234,229,.08); filter: blur(2px); }
+.hero-grid { display: grid; grid-template-columns: 1.4fr .6fr; align-items: center; gap: 64px; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--site-secondary); text-transform: uppercase; letter-spacing: .16em; font-size: 11px; font-weight: 800; }
+.eyebrow:before { content: ""; width: 28px; height: 1px; background: currentColor; }
+h1, h2, h3, p { margin-top: 0; }
+h1 { max-width: 760px; margin: 22px 0; font: 800 calc(64px * var(--site-heading-scale))/1.03 var(--site-font-heading); letter-spacing: -.065em; }
+.hero h1 span { color: var(--site-secondary); }
+.hero-copy { max-width: 610px; color: rgba(255,255,255,.72); font-size: 17px; line-height: 1.8; }
+.hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 24px; margin-top: 42px; color: rgba(255,255,255,.65); font-size: 12px; }
+.hero-meta span { display: flex; align-items: center; gap: 8px; }
+.dot { width: 7px; height: 7px; border-radius: 50%; background: #8FE0C7; box-shadow: 0 0 0 4px rgba(143,224,199,.13); }
+.profile-card { justify-self: end; width: min(100%, 290px); aspect-ratio: 1; border-radius: 36px; background: linear-gradient(145deg, rgba(203,234,229,.18), rgba(255,255,255,.035)); border: 1px solid rgba(255,255,255,.17); display: grid; place-items: center; position: relative; transform: rotate(3deg); }
+.profile-initials { width: 72%; height: 72%; border-radius: 28px; display: grid; place-items: center; background: var(--site-secondary); color: var(--site-on-secondary); font-size: 76px; font-weight: 850; letter-spacing: -.09em; transform: rotate(-3deg); }
+.profile-tag { position: absolute; bottom: 22px; left: -28px; background: #FFFFFF; color: #142B49; border-radius: 14px; padding: 13px 16px; font-size: 11px; font-weight: 800; box-shadow: 0 12px 30px rgba(0,0,0,.18); transform: rotate(-3deg); }
+.section { padding: calc(92px * var(--site-spacing-scale)) 0; }
+.section-kicker { color: light-dark(#568B83, #8BD1C3); text-transform: uppercase; letter-spacing: .16em; font-size: 11px; font-weight: 800; margin-bottom: 14px; }
+.section-heading { font: 800 calc(40px * var(--site-heading-scale))/1.12 var(--site-font-heading); letter-spacing: -.05em; color: light-dark(#182635, #F2F6FA); margin-bottom: 16px; }
+.section-intro { max-width: 650px; color: light-dark(#647383, #A9B6C5); line-height: 1.8; font-size: 15px; }
+.about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; align-items: start; }
+.about-aside { background: var(--site-secondary); color: var(--site-on-secondary); padding: 30px; border-radius: calc(22px * var(--site-radius-scale)); }
+.about-aside strong { display: block; font-size: 38px; letter-spacing: -.06em; }
+.about-aside p { margin: 8px 0 0; font-size: 13px; line-height: 1.6; }
+.about-copy { color: light-dark(#586879, #B2BECC); line-height: 1.9; font-size: 15px; }
+.about-copy p:last-child { margin-bottom: 0; }
+.skills-section { background: light-dark(#E9EFF0, #111C2B); }
+.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 38px; }
+.skill-card { background: light-dark(#FFFFFF, #182638); border: 1px solid light-dark(#DCE5E6, #2A3B50); padding: 22px; border-radius: calc(17px * var(--site-radius-scale)); min-height: 164px; }
+.skill-icon { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; background: var(--site-secondary); color: var(--site-on-secondary); font-weight: 900; font-size: 12px; margin-bottom: 18px; }
+.skill-card h3 { font-size: 14px; margin-bottom: 9px; }
+.skill-card p { color: light-dark(#6D7A87, #A7B4C3); font-size: 12px; line-height: 1.7; margin: 0; }
+.projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 38px; }
+.project-card { border: 1px solid light-dark(#DCE5E6, #2A3B50); background: light-dark(#FFFFFF, #142033); border-radius: calc(20px * var(--site-radius-scale)); overflow: hidden; }
+.project-visual { min-height: 185px; padding: 26px; display: flex; align-items: flex-end; justify-content: space-between; background: var(--site-primary); color: white; position: relative; overflow: hidden; }
+.project-visual:after { content: ""; position: absolute; width: 180px; height: 180px; border: 1px solid rgba(203,234,229,.3); border-radius: 50%; right: 35px; top: -75px; box-shadow: 0 0 0 28px rgba(203,234,229,.05), 0 0 0 56px rgba(203,234,229,.04); }
+.project-visual.alt { background: #1D4D50; }
+.project-visual.alt2 { background: #34445C; }
+.project-visual.alt3 { background: #345C55; }
+.project-number { font-size: 11px; letter-spacing: .15em; color: var(--site-secondary); font-weight: 800; z-index: 1; }
+.project-symbol { font-size: 42px; font-weight: 800; opacity: .9; z-index: 1; letter-spacing: -.08em; }
+.project-body { padding: 25px; }
+.project-body h3 { font-size: 19px; letter-spacing: -.03em; margin-bottom: 10px; }
+.project-body p { color: light-dark(#687787, #A9B6C5); font-size: 13px; line-height: 1.75; margin-bottom: 18px; }
+.tags { display: flex; flex-wrap: wrap; gap: 7px; }
+.tags span { background: light-dark(#EEF3F3, #223246); color: light-dark(#4C6570, #C3D0DA); border-radius: 999px; padding: 7px 10px; font-size: 10px; font-weight: 700; }
+.note { margin-top: 18px; font-size: 11px; color: light-dark(#7B8792, #8D9BAA); }
+.experience-section { background: light-dark(#E9EFF0, #111C2B); }
+.timeline { margin-top: 42px; border-left: 1px solid light-dark(#BFCBCD, #34475B); padding-left: 28px; display: grid; gap: 34px; }
+.timeline-item { position: relative; display: grid; grid-template-columns: 220px 1fr; gap: 28px; }
+.timeline-item:before { content: ""; position: absolute; left: -34px; top: 5px; width: 11px; height: 11px; border-radius: 50%; background: #5C9B8F; border: 3px solid light-dark(#E9EFF0,#111C2B); box-shadow: 0 0 0 1px #5C9B8F; }
+.timeline-date { font-size: 12px; color: light-dark(#6C7A87, #9EADBC); font-weight: 700; }
+.timeline-content h3 { font-size: 17px; margin-bottom: 5px; }
+.timeline-content .company { color: light-dark(#4C857C, #8BD1C3); font-size: 12px; font-weight: 750; margin-bottom: 12px; }
+.timeline-content p { color: light-dark(#687787, #A9B6C5); font-size: 13px; line-height: 1.8; margin: 0; }
+.education { display: flex; justify-content: space-between; align-items: center; gap: 24px; margin-top: 26px; padding: 24px 0; border-top: 1px solid light-dark(#D4DEDF,#2D3E52); }
+.education strong { display: block; font-size: 14px; margin-bottom: 5px; }
+.education span { color: light-dark(#71808D,#A9B6C5); font-size: 12px; }
+.contact { background: var(--site-primary); color: white; padding: 82px 0; }
+.contact-grid { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+.contact h2 { font: 800 calc(42px * var(--site-heading-scale))/1.1 var(--site-font-heading); letter-spacing: -.05em; margin: 16px 0; }
+.contact p { color: rgba(255,255,255,.7); font-size: 14px; line-height: 1.8; max-width: 510px; margin: 0; }
+.contact-links { display: grid; gap: 12px; min-width: 250px; }
+.contact-links a { display: flex; align-items: center; gap: 11px; color: var(--site-secondary); font-size: 13px; font-weight: 700; }
+.contact-links a:hover { color: white; }
+.footer { padding: 24px 0; background: light-dark(#10233D,#08111E); color: rgba(255,255,255,.62); font-size: 11px; }
+.footer-inner { display: flex; justify-content: space-between; gap: 18px; }
+@media (max-width: 850px) {
+  .hero-grid { grid-template-columns: 1fr .55fr; gap: 24px; }
+  h1 { font-size: calc(52px * var(--site-heading-scale)); }
+  .about-grid { gap: 36px; }
+  .skills-grid { grid-template-columns: repeat(2,1fr); }
+  .timeline-item { grid-template-columns: 160px 1fr; }
+}
+@media (max-width: 650px) {
+  .container { width: min(100% - 36px, 520px); }
+  .nav { min-height: 66px; }
+  .menu-toggle { display: block; }
+  .nav-cta { display: none; }
+  .nav-links { display: none; position: absolute; top: 66px; left: 0; right: 0; padding: 18px 24px 22px; background: light-dark(#F3F6F7,#0B1220); border-bottom: 1px solid light-dark(#DDE5E8,#243246); flex-direction: column; align-items: flex-start; gap: 18px; }
+  .nav-links.open { display: flex; }
+  .hero { padding: 70px 0 74px; }
+  .hero-grid { grid-template-columns: 1fr; }
+  h1 { font-size: calc(47px * var(--site-heading-scale)); }
+  .hero-copy { font-size: 15px; }
+  .profile-card { display: none; }
+  .hero-meta { gap: 15px; margin-top: 32px; }
+  .section { padding: 68px 0; }
+  .section-heading { font-size: calc(34px * var(--site-heading-scale)); }
+  .about-grid { grid-template-columns: 1fr; gap: 24px; }
+  .about-aside { max-width: 240px; }
+  .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+  .skill-card { min-height: auto; }
+  .timeline { padding-left: 22px; }
+  .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+  .timeline-item:before { left: -28px; }
+  .education { align-items: flex-start; flex-direction: column; }
+  .contact-grid { align-items: flex-start; flex-direction: column; }
+  .contact h2 { font-size: calc(36px * var(--site-heading-scale)); }
+  .footer-inner { flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *:before, *:after { transition-duration: .01ms !important; } }
+</style>
+</head>
+<body>
+<div id="app">
+<header class="topbar">
+  <div class="container nav">
+    <a class="brand" href="#home" aria-label="Sakthivel Arumugam home"><span class="brand-mark">SA</span><span>Sakthivel Arumugam</span></a>
+    <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+      <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="#contact">Let's talk <span>↗</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  </div>
+</header>
+<main>
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Software Engineer · Full Stack Developer</div>
+      <h1>Building digital tools that <span>move business forward.</span></h1>
+      <p class="hero-copy">I’m Sakthivel Arumugam, a software engineer with 4+ years of experience creating enterprise ERP and CRM applications, robust APIs, and data-driven solutions.</p>
+      <div class="hero-actions">
+        <a class="button button-secondary" href="#projects">Explore my work <span>↗</span></a>
+        <a class="button button-outline" href="Sakthivel_Arumugam_Resume.pdf" download="Sakthivel_Arumugam_Resume.pdf">Download resume ↓</a>
+      </div>
+      <div class="hero-meta"><span><i class="dot"></i> Open to opportunities</span><span>⌖ Tamil Nadu, India</span><span>✉ sakthivel190199@gmail.com</span></div>
+    </div>
+    <div class="profile-card" aria-label="SA monogram"><div class="profile-initials">SA</div><div class="profile-tag">4+ YEARS · ENGINEERING</div></div>
+  </div>
+</section>
+<section class="section" id="about">
+  <div class="container about-grid">
+    <div><div class="section-kicker">01 / About me</div><h2 class="section-heading">Engineering with a business-first mindset.</h2><div class="about-aside"><strong>4+ years</strong><p>Turning business requirements into reliable software and practical digital workflows.</p></div></div>
+    <div class="about-copy"><p>I’m a full-stack software engineer experienced in the .NET ecosystem, including ASP.NET Framework, ASP.NET Core, C#, WPF, ADO.NET and Entity Framework Core. I build and support business applications across CRM, ERP, sales, purchasing, inventory, accounts and payroll workflows.</p><p>My work spans REST API development, ReactJS and Blazor interfaces, SQL Server database design and query optimization, plus CI/CD automation with GitHub Actions and Docker. I’m also expanding into Python backend development, data processing with NumPy and Pandas, and Generative AI / LLM API integration.</p><p>I value maintainable code, thoughtful database design, collaborative delivery, and solving the real problem behind a feature.</p></div>
+  </div>
+</section>
+<section class="section skills-section" id="skills">
+  <div class="container"><div class="section-kicker">02 / Technical toolkit</div><h2 class="section-heading">Tools I work with.</h2><p class="section-intro">A practical mix of backend engineering, frontend development, database expertise and delivery tooling.</p>
+    <div class="skills-grid">
+      <article class="skill-card"><div class="skill-icon">{ }</div><h3>Backend & APIs</h3><p>C# · ASP.NET Core · ASP.NET Framework · REST APIs · MVC · WPF · ADO.NET · EF Core · LINQ · Python / FastAPI</p></article>
+      <article class="skill-card"><div class="skill-icon">UI</div><h3>Frontend</h3><p>ReactJS · Blazor · JavaScript · HTML · CSS</p></article>
+      <article class="skill-card"><div class="skill-icon">DB</div><h3>Databases</h3><p>SQL Server · T-SQL · PostgreSQL · MySQL · Stored Procedures · Query Optimization</p></article>
+      <article class="skill-card"><div class="skill-icon">↗</div><h3>Cloud & Delivery</h3><p>Docker · GitHub · GitHub Actions · CI/CD · Azure · IIS · Postman</p></article>
+      <article class="skill-card"><div class="skill-icon">AI</div><h3>AI & Automation</h3><p>Generative AI · LLMs · Prompt Engineering · AI API Integration · Cursor · Claude · GitHub Copilot</p></article>
+      <article class="skill-card"><div class="skill-icon">⚙</div><h3>Engineering Practices</h3><p>OOP · SDLC · Agile · Debugging · Code Reviews · Unit Testing</p></article>
+      <article class="skill-card"><div class="skill-icon">📊</div><h3>Reporting & Data</h3><p>Crystal Reports · HTML Reports · Power BI · Advanced Excel · NumPy · Pandas</p></article>
+      <article class="skill-card"><div class="skill-icon">✓</div><h3>Domain Knowledge</h3><p>ERP / CRM workflows · KSA ZATCA e-Invoicing Phase 1 & 2</p></article>
+    </div>
+  </div>
+</section>
+<section class="section" id="projects">
+  <div class="container"><div class="section-kicker">03 / Selected work</div><h2 class="section-heading">What I’ve been building.</h2><p class="section-intro">Representative project areas drawn from my professional experience. Descriptions are kept at a high level and do not disclose proprietary implementation details.</p>
+    <div class="projects-grid">
+      <article class="project-card"><div class="project-visual"><span class="project-number">01 / BUSINESS SYSTEMS</span><span class="project-symbol">ERP</span></div><div class="project-body"><h3>Enterprise ERP Applications</h3><p>Full-stack ERP features supporting master data, sales, purchase, trading, warehouse, production, invoicing, accounts, timesheets and payroll operations.</p><div class="tags"><span>ASP.NET Core</span><span>C#</span><span>SQL Server</span><span>EF Core</span><span>Blazor</span></div></div></article>
+      <article class="project-card"><div class="project-visual alt"><span class="project-number">02 / CUSTOMER OPERATIONS</span><span class="project-symbol">CRM</span></div><div class="project-body"><h3>CRM & API Development</h3><p>Developed CRM application functionality with REST APIs, data access layers and ReactJS interfaces, with supporting automation services.</p><div class="tags"><span>ASP.NET Core</span><span>REST APIs</span><span>ReactJS</span><span>EF Core</span></div></div></article>
+      <article class="project-card"><div class="project-visual alt2"><span class="project-number">03 / COMPLIANCE</span><span class="project-symbol">E-Invoice</span></div><div class="project-body"><h3>KSA ZATCA E-Invoicing</h3><p>Worked on Phase 1 and Phase 2 compliance features, including QR code generation, invoice signing and compliance API integration.</p><div class="tags"><span>C#</span><span>SQL Server</span><span>API Integration</span><span>Compliance</span></div></div></article>
+      <article class="project-card"><div class="project-visual alt3"><span class="project-number">04 / ENGINEERING ENABLEMENT</span><span class="project-symbol">CI/CD</span></div><div class="project-body"><h3>Automation & AI Exploration</h3><p>Maintained automated build, test and deployment workflows; explored Python data processing and AI / LLM API integration for workflow automation.</p><div class="tags"><span>GitHub Actions</span><span>Docker</span><span>Python</span><span>NumPy</span><span>Pandas</span><span>LLMs</span></div></div></article>
+    </div>
+    <p class="note">These are experience-based portfolio summaries, not claims of independently published products or public repositories.</p>
+  </div>
+</section>
+<section class="section experience-section" id="experience">
+  <div class="container"><div class="section-kicker">04 / Career journey</div><h2 class="section-heading">Experience & education.</h2>
+    <div class="timeline">
+      <article class="timeline-item"><div class="timeline-date">Dec 2025 — Jul 2026<br>Madurai, India</div><div class="timeline-content"><h3>Software Engineer</h3><div class="company">First Source Engineering (India) Pvt. Ltd.</div><p>Built and supported full-stack CRM applications using ASP.NET Core, C#, ReactJS, REST APIs, EF Core and SQL Server. Contributed to CI/CD pipelines with GitHub Actions and Docker, source control, code reviews and application support. Explored LLM and AI API integration.</p></div></article>
+      <article class="timeline-item"><div class="timeline-date">Feb 2024 — Nov 2025<br>Coimbatore, India</div><div class="timeline-content"><h3>Software Developer</h3><div class="company">Foresight Software Solution</div><p>Delivered end-to-end features for .NET ERP modules across Master, Sales, Purchase, Trading, Accounts, Timesheet and Payroll. Designed SQL Server objects and complex queries, and contributed to KSA ZATCA e-Invoicing Phase 1 and Phase 2 integration.</p></div></article>
+      <article class="timeline-item"><div class="timeline-date">Jan 2022 — Feb 2024<br>Hosur, India</div><div class="timeline-content"><h3>Software Engineer</h3><div class="company">Revamp Technologies</div><p>Developed ERP modules for Master, Warehouse, Production, Invoice and Accounts using ASP.NET Framework, MVC, WPF, Web Forms, C#, ADO.NET and SQL Server. Optimized stored procedures, functions and reporting queries.</p></div></article>
+    </div>
+    <div class="education"><div><strong>Bachelor of Science (B.Sc.) in Computer Science</strong><span>NPR Arts & Science College, Natham, Tamil Nadu</span></div><span>2016 — 2019</span></div>
+  </div>
+</section>
+<section class="contact" id="contact"><div class="container contact-grid"><div><div class="eyebrow">05 / Get in touch</div><h2>Have a project in mind?<br>Let’s build something useful.</h2><p>I’m open to discussing software engineering opportunities, backend development, full-stack projects and collaborative problem-solving.</p></div><div class="contact-links"><a href="mailto:sakthivel190199@gmail.com">✉ <span>sakthivel190199@gmail.com</span></a><a href="tel:+916380127390">☎ <span>+91 63801 27390</span></a><a href="https://www.linkedin.com/in/sakthivel-arumugam-b3b807213" target="_blank" rel="noopener noreferrer">↗ <span>Connect on LinkedIn</span></a><a href="https://github.com/" target="_blank" rel="noopener noreferrer">⌘ <span>Explore GitHub</span></a></div></div></section>
+</main>
+<footer class="footer"><div class="container footer-inner"><span>© <span id="year">2026</span> Sakthivel Arumugam. Built with care.</span><a href="#home">Back to top ↑</a></div></footer>
+</div>
+<script>
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+menuToggle.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded', String(isOpen));
+  menuToggle.textContent = isOpen ? '×' : '☰';
+});
+navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+  navLinks.classList.remove('open');
+  menuToggle.setAttribute('aria-expanded', 'false');
+  menuToggle.textContent = '☰';
+}));
+document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
