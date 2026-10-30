@@ -11,4 +11,4 @@ Open `index.html` in a browser.
 3. Choose **main** and **/(root)**, then save.
 4. Wait for GitHub Pages to publish the site.
 
-The resume link expects `Sakthivel_Arumugam_Resume.pdf` in the repository root.
+The portfolio includes a **Request resume** email link in the hero section.
